@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SavingAccount extends Model
 {
     use HasFactory;
+    protected $table = 'savings_accounts';
     protected $fillable = [
         'client_id',
         'account_number',
