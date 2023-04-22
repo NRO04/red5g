@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SavingAccount extends Controller
+class SavingAccountController extends Controller
 {
     public function create(Request $request, \App\Models\SavingAccount $saving_account){
 
@@ -14,7 +14,7 @@ class SavingAccount extends Controller
             }
             $saving_account->save();
             return response()->json([
-                'message' => 'Client created successfully',
+                'message' => 'Saving Account created successfully',
                 'saving_account' => $saving_account
             ], 201);
         }catch (\Exception $e) {
