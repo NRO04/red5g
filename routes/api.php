@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/users/create', [\App\Http\Controllers\UserController::class, 'create']);
+Route::group(['middleware' => 'jwt'], function () {
+    Route::get('/users', [\App\Http\Controllers\UserController::class, 'getUsers']);
+    Route::post('/clients/create', [\App\Http\Controllers\ClientController::class, 'create']);
+    Route::post('/saving-accounts/create', [\App\Http\Controllers\SavingAccountController::class, 'create']);
+    Route::post('/transactions/create', [\App\Http\Controllers\TransactionController::class, 'create']);
+    Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'getTransactions']);
+});
